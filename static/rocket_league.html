@@ -1,0 +1,24 @@
+<html>
+	<head>
+	</head>
+	<body>
+		<div id="songInfo"><div>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.0.4/socket.io.js" integrity="sha512-aMGMvNYu8Ue4G+fHa359jcPb1u+ytAF+P2SCb+PxrjCdO3n3ZTxJ30zuH39rimUggmTwmh2u7wvQsDTHESnmfQ==" crossorigin="anonymous"></script>
+		<script type="text/javascript" charset="utf-8">
+			let socket = io();
+			let songInfo = document.getElementById("songInfo");
+			socket.on("connect", () => {
+				socket.emit("register", "song_info"); // get updates to song info
+				socket.emit("song_info"); // get initial song info immediately
+			});
+
+			socket.on("song_info", (songName, artist) => {
+				if (songName.length > 0 && artist.length > 0) {
+					songInfo.innerText = songName + " - " + artist;
+				} else {
+					songInfo.innerText = "";
+				}
+			});
+		</script>
+	</body>
+</html>
