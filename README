@@ -1,0 +1,4 @@
+Local server for stream overlay.
+
+For now, all it does is hook into iTunes to get current song, and display that.
+Soon maybe Rocket League MMR and Overwatch SR will be displayed!
